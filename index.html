@@ -46,7 +46,7 @@ tbody tr:not(.detail-row):hover td{background:var(--light-1)}
 .cell-desc{font-size:12px;color:var(--dark-2);line-height:1.4}
 .cnae-snippet{font-size:11px;color:var(--dark-1);margin-top:4px}
 .detail-panel{display:none;padding:20px 24px;background:var(--light-2);border-top:1px solid var(--mid-grey)}
-.detail-panel.open{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px}
+.detail-panel.open{display:grid;grid-template-columns:1fr;gap:16px 32px}
 @media(max-width:671px){.detail-panel.open{grid-template-columns:1fr}}
 .dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;align-content:start}
 .dl dt{font-size:11px;font-weight:700;color:var(--dark-1);white-space:nowrap;padding-top:1px}
@@ -120,7 +120,7 @@ function renderRow(r,idx){
 }
 function buildDetail(r){
   const cnaes=r.cnaes&&r.cnaes.length?r.cnaes.map(c=>esc(c.c)+' — '+esc(c.d)).join('<br>'):'—';
-  return'<div class="dl"><dt>Descrição cClassTrib</dt><dd>'+esc(r.desc_ct)+'</dd><dt>Local de incidência IBS</dt><dd>'+esc(r.local_ibs)+'</dd><dt>CNAE(s) relacionados</dt><dd>'+cnaes+'</dd></div><div class="dl"><dt>Simples Nacional</dt><dd>'+snBadge(r)+'</dd></div>';
+  return'<div class="dl"><dt>Descrição cClassTrib</dt><dd>'+esc(r.desc_ct)+'</dd><dt>Local de incidência IBS</dt><dd>'+esc(r.local_ibs)+'</dd><dt>CNAE(s) relacionados</dt><dd>'+cnaes+'</dd></div>';
 }
 function toggleDetail(btn,idx){const dp=document.getElementById('dp-'+idx);const open=dp.classList.toggle('open');btn.textContent=open?'▲ fechar':'▼ detalhes';}
 function setMode(m,btn){mode=m;document.querySelectorAll('.modes button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render();}
